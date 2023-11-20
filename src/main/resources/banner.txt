@@ -1,0 +1,27 @@
+${AnsiColor.BLUE}
+
+
+
+                                    hhhhhhh
+                                    h:::::h
+                                    h:::::h
+                                    h:::::h
+    ssssssssss       eeeeeeeeeeee    h::::h hhhhh           eeeeeeeeeeee        eeeeeeeeeeee
+  ss::::::::::s    ee::::::::::::ee  h::::hh:::::hhh      ee::::::::::::ee    ee::::::::::::ee
+ss:::::::::::::s  e::::::eeeee:::::eeh::::::::::::::hh   e::::::eeeee:::::ee e::::::eeeee:::::ee
+s::::::ssss:::::se::::::e     e:::::eh:::::::hhh::::::h e::::::e     e:::::ee::::::e     e:::::e
+ s:::::s  ssssss e:::::::eeeee::::::eh::::::h   h::::::he:::::::eeeee::::::ee:::::::eeeee::::::e
+   s::::::s      e:::::::::::::::::e h:::::h     h:::::he:::::::::::::::::e e:::::::::::::::::e
+      s::::::s   e::::::eeeeeeeeeee  h:::::h     h:::::he::::::eeeeeeeeeee  e::::::eeeeeeeeeee
+ssssss   s:::::s e:::::::e           h:::::h     h:::::he:::::::e           e:::::::e
+s:::::ssss::::::se::::::::e          h:::::h     h:::::he::::::::e          e::::::::e
+s::::::::::::::s  e::::::::eeeeeeee  h:::::h     h:::::h e::::::::eeeeeeee   e::::::::eeeeeeee
+ s:::::::::::ss    ee:::::::::::::e  h:::::h     h:::::h  ee:::::::::::::e    ee:::::::::::::e
+  sssssssssss        eeeeeeeeeeeeee  hhhhhhh     hhhhhhh    eeeeeeeeeeeeee      eeeeeeeeeeeeee
+
+
+
+
+
+
+
