@@ -31,11 +31,13 @@ public class WebSecurityConfigure {
                         formLogin.defaultSuccessUrl("/")
                                 .permitAll())
                 .logout((logout) ->
-                        logout.logoutRequestMatcher( new AntPathRequestMatcher("/logout"))
+                        logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .logoutSuccessUrl("/"))
                 .rememberMe((rememberMe) ->
                         rememberMe.rememberMeCookieName("remember-me")
-                                .tokenValiditySeconds(300));
+                                .tokenValiditySeconds(300))
+                .requiresChannel((secure) ->
+                        secure.anyRequest().requiresSecure());
         return http.build();
     }
 
