@@ -8,4 +8,12 @@ spring:
     encoding: UTF-8
     cache-duration: PT1H
 server:
-  port: 8080
+  port: 443
+  ssl:
+    enabled: true
+    key-alias: sehee_keystore
+    key-store: classpath:sehee_keystore.p12
+    key-store-password: sehee123
+    key-password: sehee123
+    trust-store: classpath:sehee_truststore.p12
+    trust-store-password: sehee123
