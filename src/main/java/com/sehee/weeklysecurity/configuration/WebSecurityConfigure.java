@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -30,7 +31,7 @@ public class WebSecurityConfigure {
                         formLogin.defaultSuccessUrl("/")
                                 .permitAll())
                 .logout((logout) ->
-                        logout.logoutUrl("/logout")
+                        logout.logoutRequestMatcher( new AntPathRequestMatcher("/logout"))
                                 .logoutSuccessUrl("/"))
                 .rememberMe((rememberMe) ->
                         rememberMe.rememberMeCookieName("remember-me")
