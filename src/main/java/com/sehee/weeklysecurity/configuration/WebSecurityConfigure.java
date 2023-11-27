@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -21,31 +22,35 @@ public class WebSecurityConfigure {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/assets/**");
+        return (web) -> web
+                    .ignoring()
+                    .requestMatchers("/assets/**");
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/me")
-                                .hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/admin")
-                                .access(allOf(hasRole("ADMIN"), fullyAuthenticated()))
-                        .anyRequest()
-                                .permitAll())
-                .formLogin((formLogin) ->
-                        formLogin.defaultSuccessUrl("/")
-                                .permitAll())
-                .logout((logout) ->
-                        logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                .logoutSuccessUrl("/"))
-                .rememberMe((rememberMe) ->
-                        rememberMe.rememberMeCookieName("remember-me")
-                                .tokenValiditySeconds(300)
-                                .key("my-remember-me"))
-                .requiresChannel((secure) ->
-                        secure.anyRequest().requiresSecure());
+                        .requestMatchers("/me").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/admin").access(allOf(hasRole("ADMIN"), fullyAuthenticated()))
+                        .anyRequest().permitAll())
+                .formLogin((formLogin) -> formLogin
+                        .defaultSuccessUrl("/").permitAll())
+                .logout((logout) -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/"))
+                .rememberMe((rememberMe) -> rememberMe
+                        .rememberMeCookieName("remember-me")
+                        .tokenValiditySeconds(300)
+                        .key("my-remember-me"))
+                .requiresChannel((secure) -> secure
+                        .anyRequest().requiresSecure())
+                .sessionManagement((session) -> session
+                        .sessionFixation().changeSessionId()
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                        .invalidSessionUrl("/")
+                        .maximumSessions(1)
+                        .maxSessionsPreventsLogin(false));
         return http.build();
     }
 
