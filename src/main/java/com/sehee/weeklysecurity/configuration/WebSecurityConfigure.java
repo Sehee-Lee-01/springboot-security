@@ -60,11 +60,15 @@ public class WebSecurityConfigure {
                 .password("{noop}user123")
                 .roles("USER")
                 .build();
-        UserDetails admin = User.withUsername("admin")
+        UserDetails admin01 = User.withUsername("admin01")
                 .password("{noop}admin123")
                 .roles("ADMIN")
                 .build();
-        return new InMemoryUserDetailsManager(user, admin);
+        UserDetails admin02 = User.withUsername("admin02")
+                .password("{noop}admin123")
+                .roles("ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin01, admin02);
     }
 
 }
