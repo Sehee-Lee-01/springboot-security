@@ -11,6 +11,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import static org.springframework.security.authorization.AuthenticatedAuthorizationManager.fullyAuthenticated;
+import static org.springframework.security.authorization.AuthorityAuthorizationManager.hasRole;
+import static org.springframework.security.authorization.AuthorizationManagers.allOf;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfigure {
@@ -38,7 +42,8 @@ public class WebSecurityConfigure {
                                 .logoutSuccessUrl("/"))
                 .rememberMe((rememberMe) ->
                         rememberMe.rememberMeCookieName("remember-me")
-                                .tokenValiditySeconds(300))
+                                .tokenValiditySeconds(300)
+                                .key("my-remember-me"))
                 .requiresChannel((secure) ->
                         secure.anyRequest().requiresSecure());
         return http.build();
